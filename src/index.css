@@ -1,3 +1,64 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-sky-50 text-slate-800 antialiased overflow-x-hidden;
+    }
+}
+
+/* Custom Air/Float Animations */
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes float-delayed {
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes drift {
+    0% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+    animation: float-delayed 7s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+.animate-drift {
+    animation: drift 10s ease-in-out infinite;
+}
+
+.glass-panel {
+    @apply bg-white/30 backdrop-blur-md border border-white/40 shadow-xl;
+}
+
+.font-pixel {
+    font-family: "Press Start 2P", cursive;
+}
+
