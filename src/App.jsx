@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import useAppStore from './store/useAppStore'
 import LandingPage from './components/LandingPage'
-import WebcamFeed from './components/webcamFeed'
+import WebcamFeed from './components/WebcamFeed'
 import GestureCanvas from './components/GestureCanvas'
 import ShapeEditor from './components/ShapeEditor'
 import GhostGuide from './components/GhostGuide'
