@@ -38,7 +38,6 @@ const useAppStore = create((set) => ({
     // Voice State
     transcript: "",
     setTranscript: (text) => set({ transcript: text }),
-
     // Generated Code
     generatedCode: null,
     setGeneratedCode: (code) => set({ generatedCode: code }),

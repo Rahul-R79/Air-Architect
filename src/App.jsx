@@ -1,6 +1,11 @@
 import { useEffect } from 'react'
 import useAppStore from './store/useAppStore'
 import LandingPage from './components/LandingPage'
+import WebcamFeed from './components/webcamFeed'
+import GestureCanvas from './components/GestureCanvas'
+import ShapeEditor from './components/ShapeEditor'
+import GhostGuide from './components/GhostGuide'
+import HUD from './components/HUD'
 
 function App() {
     const mode = useAppStore(state => state.mode)
@@ -20,6 +25,23 @@ function App() {
             {/* 1. Landing Layer */}
             {mode === 'IDLE' && <LandingPage />}
 
+            {/* 2. Workspace Layer (Visible when not IDLE) */}
+            {mode !== 'IDLE' && (
+                <>
+                    {/* Background Video */}
+                    <WebcamFeed />
+
+                    {/* Logic & Visualization Overlay */}
+                    {permissionGranted && (
+                        <>
+                            <GestureCanvas />
+                            <ShapeEditor />
+                            <GhostGuide />
+                            <HUD />
+                        </>
+                    )}
+                </>
+            )}
         </div>
     )
 }
