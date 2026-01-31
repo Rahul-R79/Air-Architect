@@ -6,6 +6,7 @@ import GestureCanvas from './components/GestureCanvas'
 import ShapeEditor from './components/ShapeEditor'
 import GhostGuide from './components/GhostGuide'
 import HUD from './components/HUD'
+import ResultView from './components/ResultView'
 
 function App() {
     const mode = useAppStore(state => state.mode)
@@ -42,6 +43,9 @@ function App() {
                     )}
                 </>
             )}
+
+            {/* 3. Result Layer */}
+            {mode === 'RESULT' && <ResultView />}
         </div>
     )
 }
