@@ -16,13 +16,8 @@ class GeminiService {
         try {
             this.genAI = new GoogleGenerativeAI(apiKey);
 
-            // 1. Layout Generation Model
-            this.layoutModel = this.genAI.getGenerativeModel({
-                model: "gemini-2.5-flash",
-            });
-
-            // 2. Voice Transcription Model
-            this.voiceModel = this.genAI.getGenerativeModel({
+            // gemini model
+            this.model = this.genAI.getGenerativeModel({
                 model: "gemini-3-flash-preview",
             });
 
@@ -34,10 +29,10 @@ class GeminiService {
     }
 
     async generateLayout(transcript, imageBase64 = null) {
-        if (!this.layoutModel) {
+        if (!this.model) {
             this.initialize();
-            if (!this.layoutModel) {
-                throw new Error("Gemini Layout Model not initialized.");
+            if (!this.model) {
+                throw new Error("Gemini Model not initialized.");
             }
         }
 
@@ -100,7 +95,7 @@ Analyze the attached wireframe image and voice instructions to create a modern, 
         }
 
         try {
-            const result = await this.layoutModel.generateContent(parts);
+            const result = await this.model.generateContent(parts);
 
             const response = await result.response;
             const text = response.text();
@@ -112,9 +107,9 @@ Analyze the attached wireframe image and voice instructions to create a modern, 
     }
 
     async transcribeAudio(base64Audio) {
-        if (!this.voiceModel) {
+        if (!this.model) {
             this.initialize();
-            if (!this.voiceModel) return null;
+            if (!this.model) return null;
         }
 
         try {
@@ -127,7 +122,7 @@ Analyze the attached wireframe image and voice instructions to create a modern, 
                 },
             };
 
-            const result = await this.voiceModel.generateContent([
+            const result = await this.model.generateContent([
                 prompt,
                 audioPart,
             ]);
