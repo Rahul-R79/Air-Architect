@@ -53,8 +53,7 @@
 
 ### AI & Machine Learning
 
-- **Google Gemini 2.5 Flash** (Layout Generation)
-- **Google Gemini 3 Flash Preview** (Voice Transcription)
+- **Google Gemini 3 Flash Preview** (Layout Generation & Voice Transcription)
 - **Google MediaPipe** (Hand Tracking)
 
 ### APIs & Browser Standards
